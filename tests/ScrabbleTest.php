@@ -23,6 +23,16 @@
 
             $this->AssertEquals(['h', 'e', 'l', 'l', 'o'], $result);
         }
+
+        function test_wordScore()
+        {
+            $test_Scrabble = new Scrabble;
+            $input = ['h', 'e', 'l', 'l', 'o'];
+
+            $result = $test_Scrabble->wordScore($input);
+
+            $this->AssertEquals(8, $result);
+        }
     }
 
 

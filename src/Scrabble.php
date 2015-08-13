@@ -20,14 +20,23 @@
             } elseif (($letter == "q") || ($letter == "z")) {
                 $letter_value = 10;
             }
-
             return $letter_value;
-
         }
 
         function wordToArray($word)
         {
-            
+            $word_array = str_split($word);
+            return $word_array;
+        }
+
+        function wordScore($word)
+        {
+            $score = 0;
+            foreach ($word as $letter) {
+                $new_object = new Scrabble;
+                $score += $new_object->letterScore($letter);
+            }
+            return $score;
         }
     }
 
