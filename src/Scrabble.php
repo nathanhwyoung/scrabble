@@ -44,6 +44,15 @@
             $lower_case = strtolower($word);
             return $lower_case;
         }
+
+        function verifyDictionary($word)
+        {
+            $string_Dictionary = file_get_contents('https://docs.oracle.com/javase/tutorial/collections/interfaces/examples/dictionary.txt');
+            $array_Dictionary = explode("\n", $string_Dictionary);
+            // var_dump($array_Dictionary);
+
+            return in_array($word, $array_Dictionary);
+        }
     }
 
 

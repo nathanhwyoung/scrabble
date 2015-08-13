@@ -44,19 +44,14 @@
             $this->AssertEquals("hello", $result);
         }
 
-        function failTest_verifyDictionary()
+        function testPass_verifyDictionary()
         {
             $test_Scrabble = new Scrabble;
-            $input = "jjjfdssueyhdjkkaasodjhhf";
+            $input = "hello";
 
             $result = $test_Scrabble->verifyDictionary($input);
 
-            $this->AssertEquals(false, $result);
-        }
-
-        function passTest_verifyDictionary()
-        {
-
+            $this->AssertEquals(true, $result);
         }
     }
 
