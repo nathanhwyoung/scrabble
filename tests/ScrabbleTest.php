@@ -33,6 +33,31 @@
 
             $this->AssertEquals(8, $result);
         }
+
+        function test_toLowerCase()
+        {
+            $test_Scrabble = new Scrabble;
+            $input = "Hello";
+
+            $result = $test_Scrabble->toLowerCase($input);
+
+            $this->AssertEquals("hello", $result);
+        }
+
+        function failTest_verifyDictionary()
+        {
+            $test_Scrabble = new Scrabble;
+            $input = "jjjfdssueyhdjkkaasodjhhf";
+
+            $result = $test_Scrabble->verifyDictionary($input);
+
+            $this->AssertEquals(false, $result);
+        }
+
+        function passTest_verifyDictionary()
+        {
+
+        }
     }
 
 

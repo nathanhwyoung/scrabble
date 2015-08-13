@@ -4,8 +4,4 @@ Receives a string via user input, and splits it up into an array.
 
 Receives a string (minimum of two letters) via user input, and returns a word score, based on Scrabble rules.
 
-Receives a string of less than two letters, and returns an error message (according to Scrabble rules)
-
-Receives a string that contains numeric characters via user input, and returns an error message.
-
 Verifies that the user input is an actual word in the dictionary

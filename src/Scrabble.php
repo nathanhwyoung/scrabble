@@ -38,6 +38,12 @@
             }
             return $score;
         }
+
+        function toLowerCase($word)
+        {
+            $lower_case = strtolower($word);
+            return $lower_case;
+        }
     }
 
 
