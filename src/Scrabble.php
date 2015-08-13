@@ -24,6 +24,11 @@
             return $letter_value;
 
         }
+
+        function wordToArray($word)
+        {
+            
+        }
     }
 
 

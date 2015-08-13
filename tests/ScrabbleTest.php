@@ -13,6 +13,16 @@
 
             $this->AssertEquals(8, $result);
         }
+
+        function test_wordToArray()
+        {
+            $test_Scrabble = new Scrabble;
+            $input = "hello";
+
+            $result = $test_Scrabble->wordToArray($input);
+
+            $this->AssertEquals(['h', 'e', 'l', 'l', 'o'], $result);
+        }
     }
 
 
