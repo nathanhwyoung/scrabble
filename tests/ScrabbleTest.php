@@ -19,7 +19,7 @@
             $test_Scrabble = new Scrabble;
             $input = "hello";
 
-            $result = $test_Scrabble->wordToArray($input);
+            $result = $test_Scrabble->score($input);
 
             $this->AssertEquals(['h', 'e', 'l', 'l', 'o'], $result);
         }
@@ -27,11 +27,11 @@
         function test_wordScore()
         {
             $test_Scrabble = new Scrabble;
-            $input = ['h', 'e', 'l', 'l', 'o'];
+            $input = ['g', 'o', 'v', 'e', 'r', 'n', 'm', 'e', 'n', 't'];
 
-            $result = $test_Scrabble->wordScore($input);
+            $result = $test_Scrabble->score($input);
 
-            $this->AssertEquals(8, $result);
+            $this->AssertEquals(16, $result);
         }
 
         function test_toLowerCase()
@@ -39,7 +39,7 @@
             $test_Scrabble = new Scrabble;
             $input = "Hello";
 
-            $result = $test_Scrabble->toLowerCase($input);
+            $result = $test_Scrabble->score($input);
 
             $this->AssertEquals("hello", $result);
         }
@@ -47,9 +47,9 @@
         function testPass_verifyDictionary()
         {
             $test_Scrabble = new Scrabble;
-            $input = "hello";
+            $input = "dictionary";
 
-            $result = $test_Scrabble->verifyDictionary($input);
+            $result = $test_Scrabble->score($input);
 
             $this->AssertEquals(true, $result);
         }

@@ -2,6 +2,34 @@
 
     class Scrabble
     {
+        function score($word)
+        {
+            // convert string to lower case
+            $lower_case_word = strtolower($word);
+
+
+            //verify word in dictionary
+            $string_Dictionary = file_get_contents('https://raw.githubusercontent.com/jonbcard/scrabble-bot/master/src/dictionary.txt');
+            $lower_Dictionary = strtolower($string_Dictionary);
+            $array_Dictionary = explode("\n", $lower_Dictionary);
+
+            // if word is in dictionary...
+            if(in_array($lower_case_word, $array_Dictionary)) {
+
+                //split it into an array
+                $word_array = str_split($lower_case_word);
+
+
+                //iterate through word array and accumulate word value
+                $score = 0;
+                foreach ($word_array as $letter) {
+                    $new_object = new Scrabble;
+                    $score += $new_object->letterScore($letter);
+                } return $score;
+
+            } else return "error";
+        }
+
         function letterScore($letter)
         {
             $letter_value = 0;
@@ -22,38 +50,4 @@
             }
             return $letter_value;
         }
-
-        function wordToArray($word)
-        {
-            $word_array = str_split($word);
-            return $word_array;
-        }
-
-        function wordScore($word)
-        {
-            $score = 0;
-            foreach ($word as $letter) {
-                $new_object = new Scrabble;
-                $score += $new_object->letterScore($letter);
-            }
-            return $score;
-        }
-
-        function toLowerCase($word)
-        {
-            $lower_case = strtolower($word);
-            return $lower_case;
-        }
-
-        function verifyDictionary($word)
-        {
-            $string_Dictionary = file_get_contents('https://docs.oracle.com/javase/tutorial/collections/interfaces/examples/dictionary.txt');
-            $array_Dictionary = explode("\n", $string_Dictionary);
-            // var_dump($array_Dictionary);
-
-            return in_array($word, $array_Dictionary);
-        }
     }
-
-
- ?>
