@@ -7,11 +7,11 @@
         function test_letterScore()
         {
             $test_Scrabble = new Scrabble;
-            $input = "a";
+            $input = "j";
 
             $result = $test_Scrabble->letterScore($input);
 
-            $this->AssertEquals(1, $result);
+            $this->AssertEquals(8, $result);
         }
     }
 
