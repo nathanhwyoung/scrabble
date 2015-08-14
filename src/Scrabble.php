@@ -2,32 +2,18 @@
 
     class Scrabble
     {
-        function score($word)
+
+        function mainMethod($word)
         {
-            // convert string to lower case
-            $lower_case_word = strtolower($word);
+            $lower_word = $this->toLowerCase($word);
 
+            if ($this->verifyDictionary($lower_word)) {
+                $array_word = $this->wordToArray($lower_word);
+                $score_word = $this->wordScore($array_word);
+                return $score_word;
 
-            //verify word in dictionary
-            $string_Dictionary = file_get_contents('https://raw.githubusercontent.com/jonbcard/scrabble-bot/master/src/dictionary.txt');
-            $lower_Dictionary = strtolower($string_Dictionary);
-            $array_Dictionary = explode("\n", $lower_Dictionary);
+            } else return false;
 
-            // if word is in dictionary...
-            if(in_array($lower_case_word, $array_Dictionary)) {
-
-                //split it into an array
-                $word_array = str_split($lower_case_word);
-
-
-                //iterate through word array and accumulate word value
-                $score = 0;
-                foreach ($word_array as $letter) {
-                    $new_object = new Scrabble;
-                    $score += $new_object->letterScore($letter);
-                } return $score;
-
-            } else return "error";
         }
 
         function letterScore($letter)
@@ -50,4 +36,37 @@
             }
             return $letter_value;
         }
+
+        function wordToArray($word)
+        {
+            $word_array = str_split($word);
+            return $word_array;
+        }
+
+        function wordScore($word)
+        {
+            $score = 0;
+            foreach ($word as $letter) {
+                $score += $this->letterScore($letter);
+            }
+            return $score;
+        }
+
+        function toLowerCase($word)
+        {
+            $lower_case = strtolower($word);
+            return $lower_case;
+        }
+
+        function verifyDictionary($word)
+        {
+            $string_Dictionary = file_get_contents('https://raw.githubusercontent.com/jonbcard/scrabble-bot/master/src/dictionary.txt');
+            var_dump($string_Dictionary);
+            $lower_Dictionary = strtolower($string_Dictionary);
+            $array_Dictionary = explode("\n", $lower_Dictionary);
+            return in_array($word, $array_Dictionary);
+        }
     }
+
+
+ ?>

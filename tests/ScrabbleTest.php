@@ -19,7 +19,7 @@
             $test_Scrabble = new Scrabble;
             $input = "hello";
 
-            $result = $test_Scrabble->score($input);
+            $result = $test_Scrabble->wordToArray($input);
 
             $this->AssertEquals(['h', 'e', 'l', 'l', 'o'], $result);
         }
@@ -29,7 +29,7 @@
             $test_Scrabble = new Scrabble;
             $input = ['g', 'o', 'v', 'e', 'r', 'n', 'm', 'e', 'n', 't'];
 
-            $result = $test_Scrabble->score($input);
+            $result = $test_Scrabble->wordScore($input);
 
             $this->AssertEquals(16, $result);
         }
@@ -39,7 +39,7 @@
             $test_Scrabble = new Scrabble;
             $input = "Hello";
 
-            $result = $test_Scrabble->score($input);
+            $result = $test_Scrabble->toLowerCase($input);
 
             $this->AssertEquals("hello", $result);
         }
@@ -47,9 +47,9 @@
         function testPass_verifyDictionary()
         {
             $test_Scrabble = new Scrabble;
-            $input = "dictionary";
+            $input = "understanding";
 
-            $result = $test_Scrabble->score($input);
+            $result = $test_Scrabble->verifyDictionary($input);
 
             $this->AssertEquals(true, $result);
         }

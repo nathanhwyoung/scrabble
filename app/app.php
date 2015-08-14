@@ -4,6 +4,8 @@
 
     $app = new Silex\Application();
 
+    $app['debug'] = true;
+
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
@@ -12,9 +14,13 @@
         return $app['twig']->render('form.html.twig');
     });
 
+
+
     $app->get("/results", function() use($app) {
         $new_Scrabble = new Scrabble;
-        $result = $new_Scrabble->score($_GET['word']);
+        $result = $new_Scrabble->mainMethod($_GET['word']);
+
+
         return $app['twig']->render('results.html.twig', array('result' => $result));
     });
 
